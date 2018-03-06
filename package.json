@@ -24,6 +24,7 @@
     "2d"
   ],
   "dependencies": {
+    "array-range": "^1.0.1",
     "built-in-math-eval": "^0.3.0",
     "clamp": "^1.0.1",
     "extend": "^3.0.0",

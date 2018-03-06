@@ -1,13 +1,27 @@
-<div class="example">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="comment">
-                </div>
-            </div>
-            <div class="col-md-6 center-block demos">
-                <span id="built-in-eval-function" class="graph"></span>
-            </div>
-        </div>
-    </div>
-</div>
+<div class="example"><div class="container"><div class="row"><div class="col-md-6"><div class="comment"><h3>Discrete Domain</h3>
+<p>The shortest example, the function $y = sin(x)$ is evaluated with integer values inside the range</p><p>The required parameters are:</p><ul>
+<li><code>graphType: &#39;scatter&#39;</code></li>
+<li><code>xAxis</code> an object which contain info about the domain<ul>
+<li><code>xAxis.type</code> (string) possible values: discrete | real</li>
+</ul>
+</li>
+</ul>
+</div><div class="code"><pre><code class="javascript">functionPlot({
+  target: '#built-in-eval-function',
+  xAxis: {
+    label: 'x - axis',
+    scale: 'linear',
+    domain: {
+      initial: [-4, 4],
+      type: 'discrete'
+    }
+  },
+  data: [{
+    graphType: 'scatter',
+    fn: function (scope) {
+      // scope.x = Number
+      var x = scope.x
+      return Math.sin(x)
+    }
+  }]
+})</code></pre></div></div><div class="col-md-6 center-block demos"><span id="built-in-eval-function" class="graph"></span></div></div></div></div>

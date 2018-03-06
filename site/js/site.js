@@ -3,12 +3,30 @@ $(document).on('markupLoaded', function () {
   var functionPlot = window.functionPlot;
   var a, b, c;
 
+  /**
+   * ### Discrete Domain
+   *
+   * The shortest example, the function $y = sin(x)$ is evaluated with integer values inside the range
+   *
+   * The required parameters are:
+   *
+   * - `graphType: 'scatter'`
+   * - `xAxis` an object which contain info about the domain
+   *  - `xAxis.type` (string) possible values: discrete | real
+   */
+
   functionPlot({
     target: '#built-in-eval-function',
+    xAxis: {
+      label: 'x - axis',
+      scale: 'linear',
+      domain: {
+        initial: [-4, 4],
+        type: 'discrete'
+      }
+    },
     data: [{
-      // force the use of builtIn math
       graphType: 'scatter',
-      integer: true,
       fn: function (scope) {
         // scope.x = Number
         var x = scope.x
@@ -17,6 +35,7 @@ $(document).on('markupLoaded', function () {
     }]
   })
   /** */
+
 })
 
 $('#wzrd').load('partials/wzrd.html')
