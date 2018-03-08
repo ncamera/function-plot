@@ -6,13 +6,18 @@ $(document).on('markupLoaded', function () {
   /**
    * ### Discrete Domain
    *
-   * The shortest example, the function $y = sin(x)$ is evaluated with integer values inside the range
+   * The function $y = sin(x)$ is evaluated with integer values inside the range.
    *
    * The required parameters are:
    *
    * - `graphType: 'scatter'`
    * - `xAxis` an object which contain info about the domain
    *  - `xAxis.type` (string) possible values: discrete | real
+   * 
+   * Also, we add new "color" property for tip element. 
+   * 
+   * - `tip.color` (string) possible values: rgb | hexa | name color
+   * 
    */
 
   functionPlot({
