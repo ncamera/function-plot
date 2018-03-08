@@ -17,6 +17,9 @@ $(document).on('markupLoaded', function () {
 
   functionPlot({
     target: '#built-in-eval-function',
+    tip: {
+      color: 'green'
+    },
     xAxis: {
       label: 'x - axis',
       scale: 'linear',
