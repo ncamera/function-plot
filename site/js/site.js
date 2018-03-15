@@ -3,6 +3,55 @@ $(document).on('markupLoaded', function () {
   var functionPlot = window.functionPlot;
   var a, b, c;
 
+    /**
+   * ### Shape Type
+   *
+   * The required parameters are:
+   *
+   * - `graphType: 'shape'`
+   * - `shapes` an array which contain objects with info of each shape to represent
+   *  - `shapes.type` (string) possible values: text | circle | rect | polyline
+   *  - `shapes.type = text` (string) possible values: text | circle | rect | polyline
+   *    - `shapes.text` (string) text to represent
+   *    - `shapes.size` (string) font size
+   *    - `shapes.x` (string) x position
+   *    - `shapes.y` (string) y position
+   *    - `shapes.color` (string) possible values: rgb | hexa | name color
+   *    - `shapes.rotation` (string) deg values
+   */
+
+  functionPlot({
+    target: '#shape-function',
+    xAxis: {
+      label: 'x - axis',
+      scale: 'linear',
+      domain: {
+        initial: [-4, 4],
+        type: 'discrete'
+      }
+    },
+    data: [{
+      graphType: 'shape',
+      shapes: [{
+        type :"text",
+        text:"here goes the text",
+        size: 8.0,
+        x : 0.0,
+        y : -5.0,
+        color :"black",
+        rotation : 0.0
+      }, {
+        type :"rect",
+        w : 4.0,
+        h : 2.0,
+        x : 5.0,
+        y : -2.0,
+        color :"red",
+        rotation : 0.0
+      }]
+    }]
+  })
+
   /**
    * ### Discrete Domain
    *
@@ -21,7 +70,7 @@ $(document).on('markupLoaded', function () {
    */
 
   functionPlot({
-    target: '#built-in-eval-function',
+    target: '#discrete-function',
     tip: {
       color: 'green'
     },

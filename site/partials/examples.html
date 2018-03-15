@@ -1,4 +1,51 @@
-<div class="example"><div class="container"><div class="row"><div class="col-md-6"><div class="comment"><h3>Discrete Domain</h3>
+<div class="example"><div class="container"><div class="row"><div class="col-md-6"><div class="comment"><h3>Shape Type</h3>
+<p>The required parameters are:</p><ul>
+<li><code>graphType: &#39;shape&#39;</code></li>
+<li><code>shapes</code> an array which contain objects with info of each shape to represent<ul>
+<li><code>shapes.type</code> (string) possible values: text | circle | rect | polyline</li>
+<li><code>shapes.type = text</code> (string) possible values: text | circle | rect | polyline<ul>
+<li><code>shapes.text</code> (string) text to represent</li>
+<li><code>shapes.size</code> (string) font size</li>
+<li><code>shapes.x</code> (string) x position</li>
+<li><code>shapes.y</code> (string) y position</li>
+<li><code>shapes.color</code> (string) possible values: rgb | hexa | name color</li>
+<li><code>shapes.rotation</code> (string) deg values</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div><div class="code"><pre><code class="javascript">functionPlot({
+  target: '#shape-function',
+  xAxis: {
+    label: 'x - axis',
+    scale: 'linear',
+    domain: {
+      initial: [-4, 4],
+      type: 'discrete'
+    }
+  },
+  data: [{
+    graphType: 'shape',
+    shapes: [{
+      type :"text",
+      text:"here goes the text",
+      size: 8.0,
+      x : 0.0,
+      y : -5.0,
+      color :"black",
+      rotation : 0.0
+    }, {
+      type :"rect",
+      w : 4.0,
+      h : 2.0,
+      x : 5.0,
+      y : -2.0,
+      color :"red",
+      rotation : 0.0
+    }]
+  }]
+})</code></pre></div></div><div class="col-md-6 center-block demos"><span id="shape-function" class="graph"></span></div></div></div></div><div class="example"><div class="container"><div class="row"><div class="col-md-6"><div class="comment"><h3>Discrete Domain</h3>
 <p>The function $y = sin(x)$ is evaluated with integer values inside the range.</p><p>The required parameters are:</p><ul>
 <li><code>graphType: &#39;scatter&#39;</code></li>
 <li><code>xAxis</code> an object which contain info about the domain<ul>
@@ -10,7 +57,7 @@
 <li><code>tip.color</code> (string) possible values: rgb | hexa | name color</li>
 </ul>
 </div><div class="code"><pre><code class="javascript">functionPlot({
-  target: '#built-in-eval-function',
+  target: '#discrete-function',
   tip: {
     color: 'green'
   },
@@ -30,4 +77,4 @@
       return Math.sin(x)
     }
   }]
-})</code></pre></div></div><div class="col-md-6 center-block demos"><span id="built-in-eval-function" class="graph"></span></div></div></div></div>
+})</code></pre></div></div><div class="col-md-6 center-block demos"><span id="discrete-function" class="graph"></span></div></div></div></div>
