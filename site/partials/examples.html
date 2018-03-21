@@ -21,29 +21,42 @@
     label: 'x - axis',
     scale: 'linear',
     domain: {
-      initial: [-4, 4],
+      initial: [-10, 10],
       type: 'discrete'
     }
   },
   data: [{
-    graphType: 'shape',
-    shapes: [{
-      type :"text",
-      text:"here goes the text",
-      size: 8.0,
-      x : 0.0,
-      y : -5.0,
-      color :"black",
-      rotation : 0.0
-    }, {
-      type :"rect",
+    shape: {
       w : 4.0,
       h : 2.0,
-      x : 5.0,
-      y : -2.0,
+      x : -2.0,
+      y : 0,
       color :"red",
       rotation : 0.0
-    }]
+    },
+    graphType: 'shape',
+    fnType: 'rect'
+  },{
+    shape: {
+      r : 2.0,
+      x : -2.0,
+      y : 0,
+      color :"blue",
+      rotation : 0.0
+    },
+    graphType: 'shape',
+    fnType: 'circle'
+  },{
+    shape: {
+      text:"Here goes the text",
+      size: 16,
+      x : -2.0,
+      y : 3.5,
+      color :"green",
+      rotation : 0.0
+    },
+    graphType: 'shape',
+    fnType: 'text'
   }]
 })</code></pre></div></div><div class="col-md-6 center-block demos"><span id="shape-function" class="graph"></span></div></div></div></div><div class="example"><div class="container"><div class="row"><div class="col-md-6"><div class="comment"><h3>Discrete Domain</h3>
 <p>The function $y = sin(x)$ is evaluated with integer values inside the range.</p><p>The required parameters are:</p><ul>
@@ -56,25 +69,54 @@
 <p>Also, we add new &quot;color&quot; property for tip element. </p><ul>
 <li><code>tip.color</code> (string) possible values: rgb | hexa | name color</li>
 </ul>
-</div><div class="code"><pre><code class="javascript">functionPlot({
-  target: '#discrete-function',
-  tip: {
-    color: 'green'
-  },
-  xAxis: {
-    label: 'x - axis',
-    scale: 'linear',
-    domain: {
-      initial: [-4, 4],
-      type: 'discrete'
-    }
-  },
+</div><div class="code"><pre><code class="javascript">// functionPlot({
+//   target: '#discrete-function',
+//   tip: {
+//     color: 'green'
+//   },
+//   xAxis: {
+//     label: 'x - axis',
+//     scale: 'linear',
+//     domain: {
+//       initial: [-4, 4],
+//       type: 'discrete'
+//     }
+//   },
+//   data: [{
+//     graphType: 'scatter',
+//     fn: function (scope) {
+//       // scope.x = Number
+//       var x = scope.x
+//       return Math.sin(x)
+//     }
+//   }]
+// })</code></pre></div></div><div class="col-md-6 center-block demos"><span id="discrete-function" class="graph"></span></div></div></div></div><div class="example"><div class="container"><div class="row"><div class="col-md-6"><div class="comment"><h3>Points and polylines</h3>
+<p>To plot a collection of points or a polyline the following options are required:</p><ul>
+<li><code>points</code> An array of coordinates, each coordinate is represented by a 2-element array</li>
+<li><code>fnType: &#39;points&#39;</code> to tell function plot that the data is already available on <code>points</code></li>
+</ul>
+<p>Note that you can use either <code>scatter</code> or <code>polyline</code> in the option graphType</p></div><div class="code"><pre><code class="javascript">functionPlot({
+  target: '#polyline',
   data: [{
-    graphType: 'scatter',
-    fn: function (scope) {
-      // scope.x = Number
-      var x = scope.x
-      return Math.sin(x)
-    }
+    points: [
+      [1, 1],
+      [2, 1],
+      [2, 2],
+      [1, 2],
+      [1, 1]
+    ],
+    fnType: 'points',
+    graphType: 'polyline'
+  },
+  {
+    points: [
+      [2, 2],
+      [3, 2],
+      [3, 3],
+      [2, 3],
+      [2, 2]
+    ],
+    fnType: 'points',
+    graphType: 'polyline'
   }]
-})</code></pre></div></div><div class="col-md-6 center-block demos"><span id="discrete-function" class="graph"></span></div></div></div></div>
+})</code></pre></div></div><div class="col-md-6 center-block demos"><span id="polyline" class="graph"></span></div></div></div></div>

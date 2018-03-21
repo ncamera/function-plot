@@ -20,35 +20,50 @@ $(document).on('markupLoaded', function () {
    *    - `shapes.rotation` (string) deg values
    */
 
+
+
   functionPlot({
     target: '#shape-function',
     xAxis: {
       label: 'x - axis',
       scale: 'linear',
       domain: {
-        initial: [-4, 4],
+        initial: [-10, 10],
         type: 'discrete'
       }
     },
     data: [{
-      graphType: 'shape',
-      shapes: [{
-        type :"text",
-        text:"here goes the text",
-        size: 8.0,
-        x : 0.0,
-        y : -5.0,
-        color :"black",
-        rotation : 0.0
-      }, {
-        type :"rect",
+      shape: {
         w : 4.0,
         h : 2.0,
-        x : 5.0,
-        y : -2.0,
+        x : -2.0,
+        y : 0,
         color :"red",
         rotation : 0.0
-      }]
+      },
+      graphType: 'shape',
+      fnType: 'rect'
+    },{
+      shape: {
+        r : 2.0,
+        x : -2.0,
+        y : 0,
+        color :"blue",
+        rotation : 0.0
+      },
+      graphType: 'shape',
+      fnType: 'circle'
+    },{
+      shape: {
+        text:"Here goes the text",
+        size: 16,
+        x : -2.0,
+        y : 3.5,
+        color :"green",
+        rotation : 0.0
+      },
+      graphType: 'shape',
+      fnType: 'text'
     }]
   })
 
@@ -69,26 +84,62 @@ $(document).on('markupLoaded', function () {
    * 
    */
 
+  // functionPlot({
+  //   target: '#discrete-function',
+  //   tip: {
+  //     color: 'green'
+  //   },
+  //   xAxis: {
+  //     label: 'x - axis',
+  //     scale: 'linear',
+  //     domain: {
+  //       initial: [-4, 4],
+  //       type: 'discrete'
+  //     }
+  //   },
+  //   data: [{
+  //     graphType: 'scatter',
+  //     fn: function (scope) {
+  //       // scope.x = Number
+  //       var x = scope.x
+  //       return Math.sin(x)
+  //     }
+  //   }]
+  // })
+
+  /**
+   * ### Points and polylines
+   *
+   * To plot a collection of points or a polyline the following options are required:
+   *
+   * - `points` An array of coordinates, each coordinate is represented by a 2-element array
+   * - `fnType: 'points'` to tell function plot that the data is already available on `points`
+   *
+   * Note that you can use either `scatter` or `polyline` in the option graphType
+   */
   functionPlot({
-    target: '#discrete-function',
-    tip: {
-      color: 'green'
-    },
-    xAxis: {
-      label: 'x - axis',
-      scale: 'linear',
-      domain: {
-        initial: [-4, 4],
-        type: 'discrete'
-      }
-    },
+    target: '#polyline',
     data: [{
-      graphType: 'scatter',
-      fn: function (scope) {
-        // scope.x = Number
-        var x = scope.x
-        return Math.sin(x)
-      }
+      points: [
+        [1, 1],
+        [2, 1],
+        [2, 2],
+        [1, 2],
+        [1, 1]
+      ],
+      fnType: 'points',
+      graphType: 'polyline'
+    },
+    {
+      points: [
+        [2, 2],
+        [3, 2],
+        [3, 3],
+        [2, 3],
+        [2, 2]
+      ],
+      fnType: 'points',
+      graphType: 'polyline'
     }]
   })
   /** */
