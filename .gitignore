@@ -25,6 +25,9 @@ coverage
 *.tmPreferences.cache
 *.stTheme.cache
 
+### VS Code ###
+.vscode/
+
 # workspace files are user-specific
 *.sublime-workspace
 
