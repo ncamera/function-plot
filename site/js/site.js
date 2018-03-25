@@ -3,27 +3,25 @@ $(document).on('markupLoaded', function () {
   var functionPlot = window.functionPlot;
   var a, b, c;
 
-    /**
+  /**
    * ### Shape Type
    *
    * The required parameters are:
    *
    * - `graphType: 'shape'`
-   * - `shapes` an array which contain objects with info of each shape to represent
-   *  - `shapes.type` (string) possible values: text | circle | rect | polyline
-   *  - `shapes.type = text` (string) possible values: text | circle | rect | polyline
-   *    - `shapes.text` (string) text to represent
-   *    - `shapes.size` (string) font size
-   *    - `shapes.x` (string) x position
-   *    - `shapes.y` (string) y position
+   * - `shapeType: 'rect'` (string) possible values: rect | circle | text |
+   * - `shapes` shape data object to draw
+
+   *  - `shapeType = rect`
+   *    - `shapes.w` (number) width
+   *    - `shapes.h` (number) height
+   *    - `shapes.x` (number) x position
+   *    - `shapes.y` (number) y position
    *    - `shapes.color` (string) possible values: rgb | hexa | name color
    *    - `shapes.rotation` (string) deg values
    */
-
-
-
   functionPlot({
-    target: '#shape-function',
+    target: '#shape-rect-function',
     xAxis: {
       label: 'x - axis',
       scale: 'linear',
@@ -42,8 +40,28 @@ $(document).on('markupLoaded', function () {
         rotation : 0.0
       },
       graphType: 'shape',
-      fnType: 'rect'
-    },{
+      shapeType: 'rect'
+    }]
+  })
+   /**
+   *  - `shapeType = circle`
+   *    - `shapes.r` (number) circle radio
+   *    - `shapes.x` (number) x position
+   *    - `shapes.y` (number) y position
+   *    - `shapes.color` (string) possible values: rgb | hexa | name color
+   *    - `shapes.rotation` (string) deg values
+   */
+  functionPlot({
+    target: '#shape-circle-function',
+    xAxis: {
+      label: 'x - axis',
+      scale: 'linear',
+      domain: {
+        initial: [-10, 10],
+        type: 'discrete'
+      }
+    },
+    data: [{
       shape: {
         r : 2.0,
         x : -2.0,
@@ -52,8 +70,29 @@ $(document).on('markupLoaded', function () {
         rotation : 0.0
       },
       graphType: 'shape',
-      fnType: 'circle'
-    },{
+      shapeType: 'circle'
+    }]
+  })
+   /**
+   *  - `shapeType = text`
+   *    - `shapes.text` (string) text to draw
+   *    - `shapes.size` (string) font size
+   *    - `shapes.x` (number) x position
+   *    - `shapes.y` (number) y position
+   *    - `shapes.color` (string) possible values: rgb | hexa | name color
+   *    - `shapes.rotation` (string) deg values
+   */
+  functionPlot({
+    target: '#shape-text-function',
+    xAxis: {
+      label: 'x - axis',
+      scale: 'linear',
+      domain: {
+        initial: [-10, 10],
+        type: 'discrete'
+      }
+    },
+    data: [{
       shape: {
         text:"Here goes the text",
         size: 16,
@@ -63,7 +102,50 @@ $(document).on('markupLoaded', function () {
         rotation : 0.0
       },
       graphType: 'shape',
-      fnType: 'text'
+      shapeType: 'text'
+    }]
+  })
+
+  /**
+   *  New parameters for polyline point graphics:
+   * 
+   *  - `polylineType` (string) possible values: line | polygon
+   *  - `rotation` (string) deg values
+   */
+  functionPlot({
+    target: '#shape-polyline-function',
+    xAxis: {
+      label: 'x - axis',
+      scale: 'linear',
+      domain: {
+        initial: [-10, 10],
+        type: 'discrete'
+      }
+    },
+    data: [{
+      points: [
+        [-10,-2],
+        [0,-4],
+        [2,6],
+        [15,-10]
+      ],
+      color :"orange",
+      rotation : 0.0,
+      fnType: 'points',
+      polylineType : "line",
+      graphType: 'polyline',
+    },{
+      points: [
+        [-8,3],
+        [-6,1],
+        [-4,2],
+        [-6,6]
+      ],
+      color :"green",
+      rotation : 0.0,
+      fnType: 'points',
+      polylineType : "polygon",
+      graphType: 'polyline',
     }]
   })
 
@@ -84,66 +166,29 @@ $(document).on('markupLoaded', function () {
    * 
    */
 
-  // functionPlot({
-  //   target: '#discrete-function',
-  //   tip: {
-  //     color: 'green'
-  //   },
-  //   xAxis: {
-  //     label: 'x - axis',
-  //     scale: 'linear',
-  //     domain: {
-  //       initial: [-4, 4],
-  //       type: 'discrete'
-  //     }
-  //   },
-  //   data: [{
-  //     graphType: 'scatter',
-  //     fn: function (scope) {
-  //       // scope.x = Number
-  //       var x = scope.x
-  //       return Math.sin(x)
-  //     }
-  //   }]
-  // })
-
-  /**
-   * ### Points and polylines
-   *
-   * To plot a collection of points or a polyline the following options are required:
-   *
-   * - `points` An array of coordinates, each coordinate is represented by a 2-element array
-   * - `fnType: 'points'` to tell function plot that the data is already available on `points`
-   *
-   * Note that you can use either `scatter` or `polyline` in the option graphType
-   */
   functionPlot({
-    target: '#polyline',
-    data: [{
-      points: [
-        [1, 1],
-        [2, 1],
-        [2, 2],
-        [1, 2],
-        [1, 1]
-      ],
-      fnType: 'points',
-      graphType: 'polyline'
+    target: '#discrete-function',
+    tip: {
+      color: 'green'
     },
-    {
-      points: [
-        [2, 2],
-        [3, 2],
-        [3, 3],
-        [2, 3],
-        [2, 2]
-      ],
-      fnType: 'points',
-      graphType: 'polyline'
+    xAxis: {
+      label: 'x - axis',
+      scale: 'linear',
+      domain: {
+        initial: [-4, 4],
+        type: 'discrete'
+      }
+    },
+    data: [{
+      graphType: 'scatter',
+      fn: function (scope) {
+        // scope.x = Number
+        var x = scope.x
+        return Math.sin(x)
+      }
     }]
   })
   /** */
-
 })
 
 $('#wzrd').load('partials/wzrd.html')
