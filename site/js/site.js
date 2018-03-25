@@ -32,12 +32,12 @@ $(document).on('markupLoaded', function () {
     },
     data: [{
       shape: {
-        w : 4.0,
-        h : 2.0,
-        x : -2.0,
+        w : 6.0,
+        h : 3.0,
+        x : 0,
         y : 0,
         color :"red",
-        rotation : 0.0
+        rotation : 0.125
       },
       graphType: 'shape',
       shapeType: 'rect'
