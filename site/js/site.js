@@ -3,6 +3,30 @@ $(document).on('markupLoaded', function () {
   var functionPlot = window.functionPlot;
   var a, b, c;
 
+
+  functionPlot({
+    target: '#discrete-function1',
+    tip: {
+      color: 'green'
+    },
+    xAxis: {
+      label: 'x - axis',
+      scale: 'linear',
+      domain: {
+        initial: [-3, 3],
+        type: 'discrete'
+      }
+    },
+    data: [{
+      graphType: 'scatter',
+      fn: function (scope) {
+        // scope.x = Number
+        var x = scope.x
+        return Math.sin(x)
+      }
+    }]
+  })
+
   /**
    * ### Shape Type
    *
@@ -95,11 +119,11 @@ $(document).on('markupLoaded', function () {
     data: [{
       shape: {
         text:"Here goes the text",
-        size: 16,
-        x : -2.0,
-        y : 3.5,
+        size: 24,
+        x : -3.5,
+        y : 0,
         color :"green",
-        rotation : 0.0
+        rotation : 0.25
       },
       graphType: 'shape',
       shapeType: 'text'
@@ -130,7 +154,7 @@ $(document).on('markupLoaded', function () {
         [15,-10]
       ],
       color :"orange",
-      rotation : 0.0,
+      rotation : 0.25,
       fnType: 'points',
       polylineType : "line",
       graphType: 'polyline',
@@ -142,7 +166,8 @@ $(document).on('markupLoaded', function () {
         [-6,6]
       ],
       color :"green",
-      rotation : 0.0,
+      rotation : 0.125,
+      boundingBox: true,
       fnType: 'points',
       polylineType : "polygon",
       graphType: 'polyline',
