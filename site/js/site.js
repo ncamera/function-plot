@@ -166,7 +166,7 @@ $(document).on('markupLoaded', function () {
         [-6,6]
       ],
       color :"green",
-      rotation : 0.125,
+      rotation : 0,
       boundingBox: true,
       fnType: 'points',
       polylineType : "polygon",
