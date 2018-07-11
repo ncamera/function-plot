@@ -31,18 +31,80 @@ $(document).on('markupLoaded', function () {
       domain: {
         initial: [-4, 4],
         type: 'discrete'
+      },
+      yAxis: {
+        domain: [-4, 4] 
+      },
+    
+
+    },
+    conj: {
+      radio: 0.1,
+      baseDom: 'R',
+      baseCod: 'Z', 
+      cod: 'Func',
+      dom: 'Func',
+      sets: {
+        fcod: function (x) {
+          // scope.x = Number
+          return (0 <= x);
+        },
+        fdom: function (x) {
+          // scope.x = Number
+          return (0 <= x);
+        }
       }
     },
     data: [{
       graphType: 'scatter',
       fn: function (scope) {
-        // scope.x = Number
         var x = scope.x
+       // return Math.round(x);
         return Math.sin(x)
       }
     }]
   })
+  
+  functionPlot({
+    target: '#implicit-complex',
+    xAxis: {
+      label: 'x - axis',
+      scale: 'linear',
+      domain: {
+        initial: [-4, 4],
+        type: 'discrete'
+      },
+      yAxis: {
+        domain: [-4, 4] 
+      },
+    
+
+    },
+    conj: {
+      radio: 2,
+      baseDom: 'Z',
+      baseCod: 'Z', 
+      cod: 'Numer',
+      dom: 'Func',
+      sets: {
+        fcod:['Lun','Mart','Mier','Juev','Vier','Saba','Dom','Lunes'],
+        fdom: function (x) {
+          // scope.x = Number
+          return (0 <= x);
+        }
+      }
+    },
+    data: [{
+      graphType: 'scatter',
+      fn: function (scope) {
+        var x = scope.x
+        return x;
+        //return Math.sin(x)
+      }
+    }]
+  })
   /** */
+
 
 })
 
