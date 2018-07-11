@@ -1,4 +1,147 @@
-<div class="example"><div class="container"><div class="row"><div class="col-md-6"><div class="comment"><h3>Discrete Domain</h3>
+<div class="example"><div class="container"><div class="row"><div class="col-md-6"><div class="comment"><h3>Shape Type</h3>
+<p>The required parameters are:</p><ul>
+<li><code>graphType: &#39;shape&#39;</code></li>
+<li><code>shapeType: &#39;rect&#39;</code> (string) possible values: rect | circle | text |</li>
+<li><p><code>shapes</code> shape data object to draw</p><ul>
+<li><code>shapeType = rect</code><ul>
+<li><code>shapes.w</code> (number) width</li>
+<li><code>shapes.h</code> (number) height</li>
+<li><code>shapes.x</code> (number) x position</li>
+<li><code>shapes.y</code> (number) y position</li>
+<li><code>shapes.color</code> (string) possible values: rgb | hexa | name color</li>
+<li><code>shapes.rotation</code> (string) deg values</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div><div class="code"><pre><code class="javascript">functionPlot({
+  target: '#shape-rect-function',
+  xAxis: {
+    label: 'x - axis',
+    scale: 'linear',
+    domain: {
+      initial: [-10, 10],
+      type: 'discrete'
+    }
+  },
+  data: [{
+    shape: {
+      w : 6.0,
+      h : 3.0,
+      x : 0,
+      y : 0,
+      color :"red",
+      rotation : 0.125
+    },
+    graphType: 'shape',
+    shapeType: 'rect'
+  }]
+})</code></pre></div></div><div class="col-md-6 center-block demos"><span id="shape-rect-function" class="graph"></span></div></div></div></div><div class="example"><div class="container"><div class="row"><div class="col-md-6"><div class="comment"><ul>
+<li><code>shapeType = circle</code><ul>
+<li><code>shapes.r</code> (number) circle radio</li>
+<li><code>shapes.x</code> (number) x position</li>
+<li><code>shapes.y</code> (number) y position</li>
+<li><code>shapes.color</code> (string) possible values: rgb | hexa | name color</li>
+<li><code>shapes.rotation</code> (string) deg values</li>
+</ul>
+</li>
+</ul>
+</div><div class="code"><pre><code class="javascript">functionPlot({
+  target: '#shape-circle-function',
+  xAxis: {
+    label: 'x - axis',
+    scale: 'linear',
+    domain: {
+      initial: [-10, 10],
+      type: 'discrete'
+    }
+  },
+  data: [{
+    shape: {
+      r : 2.0,
+      x : -2.0,
+      y : 0,
+      color :"blue",
+      rotation : 0.0
+    },
+    graphType: 'shape',
+    shapeType: 'circle'
+  }]
+})</code></pre></div></div><div class="col-md-6 center-block demos"><span id="shape-circle-function" class="graph"></span></div></div></div></div><div class="example"><div class="container"><div class="row"><div class="col-md-6"><div class="comment"><ul>
+<li><code>shapeType = text</code><ul>
+<li><code>shapes.text</code> (string) text to draw</li>
+<li><code>shapes.size</code> (string) font size</li>
+<li><code>shapes.x</code> (number) x position</li>
+<li><code>shapes.y</code> (number) y position</li>
+<li><code>shapes.color</code> (string) possible values: rgb | hexa | name color</li>
+<li><code>shapes.rotation</code> (string) deg values</li>
+</ul>
+</li>
+</ul>
+</div><div class="code"><pre><code class="javascript">functionPlot({
+  target: '#shape-text-function',
+  xAxis: {
+    label: 'x - axis',
+    scale: 'linear',
+    domain: {
+      initial: [-10, 10],
+      type: 'discrete'
+    }
+  },
+  data: [{
+    shape: {
+      text:"Here goes the text",
+      size: 24,
+      x : -3.5,
+      y : 0,
+      color :"green",
+      rotation : 0.25
+    },
+    graphType: 'shape',
+    shapeType: 'text'
+  }]
+})</code></pre></div></div><div class="col-md-6 center-block demos"><span id="shape-text-function" class="graph"></span></div></div></div></div><div class="example"><div class="container"><div class="row"><div class="col-md-6"><div class="comment"><p>New parameters for polyline point graphics:</p><ul>
+<li><code>polylineType</code> (string) possible values: line | polygon</li>
+<li><code>rotation</code> (string) deg values</li>
+</ul>
+</div><div class="code"><pre><code class="javascript">functionPlot({
+  target: '#shape-polyline-function',
+  xAxis: {
+    label: 'x - axis',
+    scale: 'linear',
+    domain: {
+      initial: [-10, 10],
+      type: 'discrete'
+    }
+  },
+  data: [{
+    points: [
+      [-10,-2],
+      [0,-4],
+      [2,6],
+      [15,-10]
+    ],
+    color :"orange",
+    rotation : 0.25,
+    fnType: 'points',
+    polylineType : "line",
+    graphType: 'polyline',
+  },{
+    points: [
+      [-8,3],
+      [-6,1],
+      [-4,2],
+      [-6,6]
+    ],
+    color :"green",
+    rotation : 0,
+    boundingBox: true,
+    fnType: 'points',
+    polylineType : "polygon",
+    graphType: 'polyline',
+  }]
+})</code></pre></div></div><div class="col-md-6 center-block demos"><span id="shape-polyline-function" class="graph"></span></div></div></div></div><div class="example"><div class="container"><div class="row"><div class="col-md-6"><div class="comment"><h3>Discrete Domain</h3>
 <p>The function $y = sin(x)$ is evaluated with integer values inside the range.</p><p>The required parameters are:</p><ul>
 <li><code>graphType: &#39;scatter&#39;</code></li>
 <li><code>xAxis</code> an object which contain info about the domain<ul>

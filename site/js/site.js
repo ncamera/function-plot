@@ -3,6 +3,177 @@ $(document).on('markupLoaded', function () {
   var functionPlot = window.functionPlot;
   var a, b, c;
 
+
+  functionPlot({
+    target: '#discrete-function1',
+    tip: {
+      color: 'green'
+    },
+    xAxis: {
+      label: 'x - axis',
+      scale: 'linear',
+      domain: {
+        initial: [-3, 3],
+        type: 'discrete'
+      }
+    },
+    data: [{
+      graphType: 'scatter',
+      fn: function (scope) {
+        // scope.x = Number
+        var x = scope.x
+        return Math.sin(x)
+      }
+    }]
+  })
+
+  /**
+   * ### Shape Type
+   *
+   * The required parameters are:
+   *
+   * - `graphType: 'shape'`
+   * - `shapeType: 'rect'` (string) possible values: rect | circle | text |
+   * - `shapes` shape data object to draw
+
+   *  - `shapeType = rect`
+   *    - `shapes.w` (number) width
+   *    - `shapes.h` (number) height
+   *    - `shapes.x` (number) x position
+   *    - `shapes.y` (number) y position
+   *    - `shapes.color` (string) possible values: rgb | hexa | name color
+   *    - `shapes.rotation` (string) deg values
+   */
+  functionPlot({
+    target: '#shape-rect-function',
+    xAxis: {
+      label: 'x - axis',
+      scale: 'linear',
+      domain: {
+        initial: [-10, 10],
+        type: 'discrete'
+      }
+    },
+    data: [{
+      shape: {
+        w : 6.0,
+        h : 3.0,
+        x : 0,
+        y : 0,
+        color :"red",
+        rotation : 0.125
+      },
+      graphType: 'shape',
+      shapeType: 'rect'
+    }]
+  })
+   /**
+   *  - `shapeType = circle`
+   *    - `shapes.r` (number) circle radio
+   *    - `shapes.x` (number) x position
+   *    - `shapes.y` (number) y position
+   *    - `shapes.color` (string) possible values: rgb | hexa | name color
+   *    - `shapes.rotation` (string) deg values
+   */
+  functionPlot({
+    target: '#shape-circle-function',
+    xAxis: {
+      label: 'x - axis',
+      scale: 'linear',
+      domain: {
+        initial: [-10, 10],
+        type: 'discrete'
+      }
+    },
+    data: [{
+      shape: {
+        r : 2.0,
+        x : -2.0,
+        y : 0,
+        color :"blue",
+        rotation : 0.0
+      },
+      graphType: 'shape',
+      shapeType: 'circle'
+    }]
+  })
+   /**
+   *  - `shapeType = text`
+   *    - `shapes.text` (string) text to draw
+   *    - `shapes.size` (string) font size
+   *    - `shapes.x` (number) x position
+   *    - `shapes.y` (number) y position
+   *    - `shapes.color` (string) possible values: rgb | hexa | name color
+   *    - `shapes.rotation` (string) deg values
+   */
+  functionPlot({
+    target: '#shape-text-function',
+    xAxis: {
+      label: 'x - axis',
+      scale: 'linear',
+      domain: {
+        initial: [-10, 10],
+        type: 'discrete'
+      }
+    },
+    data: [{
+      shape: {
+        text:"Here goes the text",
+        size: 24,
+        x : -3.5,
+        y : 0,
+        color :"green",
+        rotation : 0.25
+      },
+      graphType: 'shape',
+      shapeType: 'text'
+    }]
+  })
+
+  /**
+   *  New parameters for polyline point graphics:
+   * 
+   *  - `polylineType` (string) possible values: line | polygon
+   *  - `rotation` (string) deg values
+   */
+  functionPlot({
+    target: '#shape-polyline-function',
+    xAxis: {
+      label: 'x - axis',
+      scale: 'linear',
+      domain: {
+        initial: [-10, 10],
+        type: 'discrete'
+      }
+    },
+    data: [{
+      points: [
+        [-10,-2],
+        [0,-4],
+        [2,6],
+        [15,-10]
+      ],
+      color :"orange",
+      rotation : 0.25,
+      fnType: 'points',
+      polylineType : "line",
+      graphType: 'polyline',
+    },{
+      points: [
+        [-8,3],
+        [-6,1],
+        [-4,2],
+        [-6,6]
+      ],
+      color :"green",
+      rotation : 0,
+      boundingBox: true,
+      fnType: 'points',
+      polylineType : "polygon",
+      graphType: 'polyline',
+    }]
+  })
+
   /**
    * ### Discrete Domain
    *
@@ -104,8 +275,6 @@ $(document).on('markupLoaded', function () {
     }]
   })
   /** */
-
-
 })
 
 $('#wzrd').load('partials/wzrd.html')
