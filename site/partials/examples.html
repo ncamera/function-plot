@@ -1,4 +1,4 @@
-<div class="example"><div class="container"><div class="row"><div class="col-md-6"><div class="comment"><h3>Shape Type</h3>
+<div class="row"><button id="zoom-in" class="primary">ZOOM IN!</button><button id="zoom-out" class="primary">ZOOM OUT!</button></div><div class="example"><div class="container"><div class="row"><div class="col-md-6"><div class="comment"><h3>Shape Type</h3>
 <p>The required parameters are:</p><ul>
 <li><code>graphType: &#39;shape&#39;</code></li>
 <li><code>shapeType: &#39;rect&#39;</code> (string) possible values: rect | circle | text |</li>
@@ -15,7 +15,7 @@
 </ul>
 </li>
 </ul>
-</div><div class="code"><pre><code class="javascript">functionPlot({
+</div><div class="code"><pre><code class="javascript">instance = functionPlot({
   target: '#shape-rect-function',
   xAxis: {
     label: 'x - axis',

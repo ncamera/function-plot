@@ -1,4 +1,5 @@
 'use strict';
+var instance = {};
 $(document).on('markupLoaded', function () {
   var functionPlot = window.functionPlot;
   var a, b, c;
@@ -44,7 +45,7 @@ $(document).on('markupLoaded', function () {
    *    - `shapes.color` (string) possible values: rgb | hexa | name color
    *    - `shapes.rotation` (string) deg values
    */
-  functionPlot({
+  instance = functionPlot({
     target: '#shape-rect-function',
     xAxis: {
       label: 'x - axis',
@@ -289,6 +290,13 @@ $('#examples').load('partials/examples.html', function () {
     var value = +this.value;
     $('#p-slider-value').html(value)
   })
+
+  $('#zoom-in').click(function() {
+    instance.zoomIn();
+  });
+  $('#zoom-out').click(function() {
+    instance.zoomOut();
+  });
 })
 
 
@@ -314,3 +322,4 @@ $('#examples').load('partials/examples.html', function () {
 //    })
 //  })
 //}
+
