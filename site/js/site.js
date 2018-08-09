@@ -61,7 +61,8 @@ $(document).on('markupLoaded', function () {
         h : 3.0,
         x : 0,
         y : 0,
-        color :"red",
+        fill :"red",
+        stroke: "#7f8c8d",
         rotation : 0.125
       },
       graphType: 'shape',
@@ -91,7 +92,8 @@ $(document).on('markupLoaded', function () {
         r : 2.0,
         x : -2.0,
         y : 0,
-        color :"blue",
+        fill :"#2980b9",
+        stroke: "#ecf0f1",
         rotation : 0.0
       },
       graphType: 'shape',
@@ -123,7 +125,7 @@ $(document).on('markupLoaded', function () {
         size: 24,
         x : -3.5,
         y : 0,
-        color :"green",
+        fill :"#27ae60",
         rotation : 0.25
       },
       graphType: 'shape',
