@@ -63,7 +63,7 @@ $(document).on('markupLoaded', function () {
         y : 0,
         fill :"red",
         stroke: "#7f8c8d",
-        rotation : 0.125
+        rotation : -45
       },
       graphType: 'shape',
       shapeType: 'rect'
@@ -126,7 +126,7 @@ $(document).on('markupLoaded', function () {
         x : -3.5,
         y : 0,
         fill :"#27ae60",
-        rotation : 0.25
+        rotation : -90
       },
       graphType: 'shape',
       shapeType: 'text'
@@ -157,7 +157,7 @@ $(document).on('markupLoaded', function () {
         [15,-10]
       ],
       color :"orange",
-      rotation : 0.25,
+      rotation : -90,
       fnType: 'points',
       polylineType : "line",
       graphType: 'polyline',
