@@ -69,6 +69,45 @@ $(document).on('markupLoaded', function () {
       shapeType: 'rect'
     }]
   })
+
+   /**
+   *  - `Function`
+   */
+  functionPlot({
+    title: 'y = x * x',
+    target: '#quadratic-with-options',
+    width: 580,
+    height: 400,
+    disableZoom: true,
+    xAxis: {
+      label: 'x - axis',
+      domain: [-6, 6]
+    },
+    yAxis: {
+      label: 'y - axis'
+    },
+    conj: {
+      radio: 0.1,
+      baseDom: 'R',
+      baseCod: 'Z', 
+      cod: 'Func',
+      dom: 'Func',
+      sets: {
+        fcod: function (x) {
+          // scope.x = Number
+          return (0 <= x);
+        },
+        fdom: function (x) {
+          // scope.x = Number
+          return (0 <= x);
+        }
+      }
+    },
+    data: [{
+      fn: 'x^2'
+    }]
+  })
+
    /**
    *  - `shapeType = circle`
    *    - `shapes.r` (number) circle radio
@@ -293,12 +332,66 @@ $('#examples').load('partials/examples.html', function () {
     $('#p-slider-value').html(value)
   })
 
+  // Zoom
   $('#zoom-in').click(function() {
     instance.zoomIn();
   });
   $('#zoom-out').click(function() {
     instance.zoomOut();
   });
+
+  // Update Figure Graph
+  $('#update-figure').click(function() {
+    instance = functionPlot({
+      target: '#shape-rect-function',
+      xAxis: {
+        label: 'x - axis',
+        scale: 'linear',
+        domain: {
+          initial: [-10, 10],
+          type: 'discrete'
+        }
+      },
+      data: [{
+        shape: {
+          r : 2.0,
+          x : -2.0,
+          y : 0,
+          fill :"#2980b9",
+          stroke: "#ecf0f1",
+          rotation : 0.0
+        },
+        graphType: 'shape',
+        shapeType: 'circle'
+      }]
+    })
+  })
+
+  // Update Function Graph
+  $('#update-function').click(function() {
+    instance = functionPlot({
+      target: '#quadratic-with-options',
+      xAxis: {
+        label: 'x - axis',
+        scale: 'linear',
+        domain: {
+          initial: [-10, 10]
+        }
+      },
+      conj: {
+        radio: 4,
+        baseDom: 'R',
+        baseCod: 'R', 
+        cod: 'R',
+        dom: 'R'
+      }, 
+      data: [ {
+        fn: 'x * x * x',
+        graphType: 'interval'
+        //nSamples: 1000
+      }]
+    })
+  })
 })
 
 

@@ -1,6 +1,10 @@
 .row
-  button#zoom-in.primary ZOOM IN!
-  button#zoom-out.primary ZOOM OUT!
+  .container
+    button#zoom-in.primary(style="margin-right: 8px") ZOOM IN!
+    button#zoom-out.primary(style="margin-right: 8px") ZOOM OUT!
+    button#update-figure.primary(style="margin-right: 8px") UPDATE FIGURE!
+    button#update-function.primary(style="margin-right: 8px") UPDATE FUNCTION!
+    button#clear-figure.primary(style="margin-right: 8px") CLEAR FIGURE!
 each c in comments
   .example
     .container
