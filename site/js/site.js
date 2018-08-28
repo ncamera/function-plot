@@ -31,18 +31,168 @@ $(document).on('markupLoaded', function () {
       domain: {
         initial: [-4, 4],
         type: 'discrete'
-      }
+      },
+      yAxis: {
+        domain: [-4, 4] 
+      },
+    
+
     },
+    conj:[
+      {
+       radio: 2, 
+       baseDom: 'Z',
+       dom: 'Z', 
+       baseCod: 'Z',
+       cod: 'Z',
+       sets: {
+         fdom:'Z',
+         fcod: 'Z'}
+      },
+    {
+      radio: 2, 
+      baseDom: 'Z',
+      dom: 'Func', 
+      baseCod: 'Z',
+      cod: 'Func',
+      sets: {
+        fdom:function (x) {
+               return (2 <= x);
+        },
+        fcod: function (x) {
+          return (0 <= x && x <= 4);
+         }}
+      },
+      {
+          radio: 0.3, 
+          baseDom: 'R',
+          dom: 'R', 
+          baseCod: 'R',
+          cod: 'R',
+          sets: {
+            fdom:'R',
+            fcod:'R'}
+      },
+        {
+                  radio: 2, 
+                  baseDom: 'Z',
+                  dom: 'Func', 
+                  baseCod: 'Z',
+                  cod: 'Z',
+                  sets: {
+                    fdom:function (x) {
+                      return (x <= 0);
+                     },
+                    fcod:'Z'}
+        },
+        {
+                      radio: 0.3, 
+                      baseDom: 'R',
+                      dom: 'R', 
+                      baseCod: 'R',
+                      cod: 'R',
+                      sets: {
+                        fdom:'R',
+                        fcod: 'R'}
+        },
+        {
+          radio: 2, 
+          baseDom: 'Z',
+          dom: 'Func', 
+          baseCod: 'Z',
+          cod: 'Z',
+          sets: {
+            fdom:function (x) {
+              return (x <= 0);
+             },
+            fcod:'Z'}
+        }           
+    ],
     data: [{
       graphType: 'scatter',
-      fn: function (scope) {
-        // scope.x = Number
+            fn: function (scope) {
         var x = scope.x
-        return Math.sin(x)
+        //return Math.round(x);
+        return (x - 4)
+      },
+      id:1,
+      color:'red'
+    },{graphType: 'polyline',
+       id: 2,
+       fn: function (scope) {
+        var x = scope.x
+        //return Math.round(x);
+        return (x * x * x)
+      },      color:'blue'
+    },
+      {graphType: 'scatter',
+      id: 3,
+      fn: function (scope) {
+       var x = scope.x
+       //return Math.round(x);
+       return (x * x)
+     },color:'green' },{
+      graphType: 'polyline',
+            fn: function (scope) {
+        var x = scope.x
+        //return Math.round(x);
+        return Math.cos(x)
+      },
+      id:4,color:'orange'
+    },{
+      graphType: 'scatter',
+            fn: function (scope) {
+        var x = scope.x
+        //return Math.round(x);
+        return 2/x
+      },
+      id:5,color:'black'
+    }]
+  })
+  
+  functionPlot({
+    target: '#implicit-complex',
+    xAxis: {
+      label: 'x - axis',
+      scale: 'linear',
+      domain: {
+        initial: [-4, 4],
+        type: 'discrete'
+      },
+      yAxis: {
+        domain: [-4, 4] 
+      },
+    
+
+    },
+    conj: [{
+      radio: 2,
+      baseDom: 'Z',
+      baseCod: 'Z', 
+      cod: 'Func',
+      dom: 'Numer',
+      sets: {
+        fdom:['Lun','Mart','Mier','Juev','Vier','Saba','Dom','Lunes'],
+        fcod: function (x) {
+          // scope.x = Number
+          return (0 <= x);
+        }
+      }
+    }],
+    data: [{
+      graphType: 'scatter',
+      id: 0,
+      fn: function (scope) {
+        var x = scope.x
+        if (x == 2){ return 1}
+        else if(x == 1) { return 3}
+        
+        //return Math.sin(x)
       }
     }]
   })
   /** */
+
 
 })
 
