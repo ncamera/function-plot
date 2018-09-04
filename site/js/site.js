@@ -4,30 +4,6 @@ $(document).on('markupLoaded', function () {
   var functionPlot = window.functionPlot;
   var a, b, c;
 
-
-  functionPlot({
-    target: '#discrete-function1',
-    tip: {
-      color: 'green'
-    },
-    xAxis: {
-      label: 'x - axis',
-      scale: 'linear',
-      domain: {
-        initial: [-3, 3],
-        type: 'discrete'
-      }
-    },
-    data: [{
-      graphType: 'scatter',
-      fn: function (scope) {
-        // scope.x = Number
-        var x = scope.x
-        return Math.sin(x)
-      }
-    }]
-  })
-
   /**
    * ### Shape Type
    *
@@ -342,6 +318,7 @@ $('#examples').load('partials/examples.html', function () {
 
   // Update Figure Graph
   $('#update-figure').click(function() {
+    console.log('Instance', instance);
     instance = functionPlot({
       target: '#shape-rect-function',
       xAxis: {
