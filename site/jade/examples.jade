@@ -1,10 +1,13 @@
 .row
   .container
-    button#zoom-in.primary(style="margin-right: 8px") ZOOM IN!
-    button#zoom-out.primary(style="margin-right: 8px") ZOOM OUT!
-    button#update-figure.primary(style="margin-right: 8px") UPDATE FIGURE!
-    button#update-function.primary(style="margin-right: 8px") UPDATE FUNCTION!
-    button#clear-figure.primary(style="margin-right: 8px") CLEAR FIGURE!
+    button#zoom-in.btn.btn-default(style="margin-right: 8px") Zoom In
+    button#zoom-out.btn.btn-default(style="margin-right: 8px") Zoom Out
+    button#update-figure.btn.btn-primary(style="margin-right: 8px") Update Figure
+    button#update-function.btn.btn-primary(style="margin-right: 8px") Update Function
+    button#clear-figure.btn.btn-danger(style="margin-right: 8px") Clear Figure
+    button#grid-btn.btn.btn-info(style="margin-right: 8px") Grid
+    button#axis-btn.btn.btn-info(style="margin-right: 8px") Axis
+    button#tip-btn.btn.btn-info(style="margin-right: 8px") Tip
 each c in comments
   .example
     .container

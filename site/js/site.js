@@ -392,6 +392,11 @@ $('#examples').load('partials/examples.html', function () {
       }]
     })
   })
+
+  // Clear Figure
+  $('#clear-figure').click(function() {
+    instance.removeAllGraphs();
+  })
 })
 
 

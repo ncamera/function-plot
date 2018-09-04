@@ -1,4 +1,4 @@
-<div class="row"><div class="container"><button id="zoom-in" style="margin-right: 8px" class="primary">ZOOM IN!</button><button id="zoom-out" style="margin-right: 8px" class="primary">ZOOM OUT!</button><button id="update-figure" style="margin-right: 8px" class="primary">UPDATE FIGURE!</button><button id="update-function" style="margin-right: 8px" class="primary">UPDATE FUNCTION!</button></div></div><div class="example"><div class="container"><div class="row"><div class="col-md-6"><div class="comment"><h3>Shape Type</h3>
+<div class="row"><div class="container"><button id="zoom-in" style="margin-right: 8px" class="btn btn-default">Zoom In</button><button id="zoom-out" style="margin-right: 8px" class="btn btn-default">Zoom Out</button><button id="update-figure" style="margin-right: 8px" class="btn btn-primary">Update Figure</button><button id="update-function" style="margin-right: 8px" class="btn btn-primary">Update Function</button><button id="clear-figure" style="margin-right: 8px" class="btn btn-danger">Clear Figure</button><button id="grid-btn" style="margin-right: 8px" class="btn btn-info">Grid</button><button id="axis-btn" style="margin-right: 8px" class="btn btn-info">Axis</button><button id="tip-btn" style="margin-right: 8px" class="btn btn-info">Tip</button></div></div><div class="example"><div class="container"><div class="row"><div class="col-md-6"><div class="comment"><h3>Shape Type</h3>
 <p>The required parameters are:</p><ul>
 <li><code>graphType: &#39;shape&#39;</code></li>
 <li><code>shapeType: &#39;rect&#39;</code> (string) possible values: rect | circle | text |</li>
@@ -53,6 +53,23 @@
   },
   yAxis: {
     label: 'y - axis'
+  },
+  conj: {
+    radio: 0.1,
+    baseDom: 'R',
+    baseCod: 'Z', 
+    cod: 'Func',
+    dom: 'Func',
+    sets: {
+      fcod: function (x) {
+        // scope.x = Number
+        return (0 <= x);
+      },
+      fdom: function (x) {
+        // scope.x = Number
+        return (0 <= x);
+      }
+    }
   },
   data: [{
     fn: 'x^2'
@@ -316,10 +333,24 @@ $('#examples').load('partials/examples.html', function () {
           initial: [-10, 10]
         }
       },
+      conj: {
+        radio: 4,
+        baseDom: 'R',
+        baseCod: 'R', 
+        cod: 'R',
+        dom: 'R'
+      }, 
       data: [ {
-        fn: 'x * x * x'
+        fn: 'x * x * x',
+        graphType: 'interval'
+        //nSamples: 1000
       }]
     })
+  })
+
+  // Clear Figure
+  $('#update-function').click(function() {
+    instance.cleanPlot();
   })
 })
 
