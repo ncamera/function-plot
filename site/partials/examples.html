@@ -41,7 +41,7 @@
 })</code></pre></div></div><div class="col-md-6 center-block demos"><span id="shape-rect-function" class="graph"></span></div></div></div></div><div class="example"><div class="container"><div class="row"><div class="col-md-6"><div class="comment"><ul>
 <li><code>Function</code></li>
 </ul>
-</div><div class="code"><pre><code class="javascript">functionPlot({
+</div><div class="code"><pre><code class="javascript">instanceFunction = functionPlot({
   title: 'y = x * x',
   target: '#quadratic-with-options',
   width: 580,
@@ -324,7 +324,7 @@ $('#examples').load('partials/examples.html', function () {
 
   // Update Function Graph
   $('#update-function').click(function() {
-    instance = functionPlot({
+    instanceFunction = functionPlot({
       target: '#quadratic-with-options',
       xAxis: {
         label: 'x - axis',
@@ -349,8 +349,8 @@ $('#examples').load('partials/examples.html', function () {
   })
 
   // Clear Figure
-  $('#update-function').click(function() {
-    instance.cleanPlot();
+  $('#clear-figure').click(function() {
+    instance.removeAllGraphs();
   })
 })
 

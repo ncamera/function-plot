@@ -1,5 +1,6 @@
 'use strict';
-var instance = {};
+var instance = {};  
+var instanceFunction = {};
 $(document).on('markupLoaded', function () {
   var functionPlot = window.functionPlot;
   var a, b, c;
@@ -23,6 +24,7 @@ $(document).on('markupLoaded', function () {
    */
   instance = functionPlot({
     target: '#shape-rect-function',
+    axis: false,
     xAxis: {
       label: 'x - axis',
       scale: 'linear',
@@ -49,7 +51,7 @@ $(document).on('markupLoaded', function () {
    /**
    *  - `Function`
    */
-  functionPlot({
+  instanceFunction = functionPlot({
     title: 'y = x * x',
     target: '#quadratic-with-options',
     width: 580,
@@ -318,7 +320,6 @@ $('#examples').load('partials/examples.html', function () {
 
   // Update Figure Graph
   $('#update-figure').click(function() {
-    console.log('Instance', instance);
     instance = functionPlot({
       target: '#shape-rect-function',
       xAxis: {
@@ -346,7 +347,7 @@ $('#examples').load('partials/examples.html', function () {
 
   // Update Function Graph
   $('#update-function').click(function() {
-    instance = functionPlot({
+    instanceFunction = functionPlot({
       target: '#quadratic-with-options',
       xAxis: {
         label: 'x - axis',
@@ -373,6 +374,19 @@ $('#examples').load('partials/examples.html', function () {
   // Clear Figure
   $('#clear-figure').click(function() {
     instance.removeAllGraphs();
+  })
+
+  // Clear Figure
+  $('#grid-btn').click(function() {
+  })
+  
+  // Clear Figure
+  $('#axis-btn').click(function() {
+    instance.toggleAxis();
+  })
+  
+  // Clear Figure
+  $('#tip-btn').click(function() {
   })
 })
 
