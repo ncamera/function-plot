@@ -49,40 +49,7 @@ $(document).on('markupLoaded', function () {
    /**
    *  - `Function`
    */
-  functionPlot({
-    title: 'y = x * x',
-    target: '#quadratic-with-options',
-    width: 580,
-    height: 400,
-    disableZoom: true,
-    xAxis: {
-      label: 'x - axis',
-      domain: [-6, 6]
-    },
-    yAxis: {
-      label: 'y - axis'
-    },
-    conj: {
-      radio: 0.1,
-      baseDom: 'R',
-      baseCod: 'Z', 
-      cod: 'Func',
-      dom: 'Func',
-      sets: {
-        fcod: function (x) {
-          // scope.x = Number
-          return (0 <= x);
-        },
-        fdom: function (x) {
-          // scope.x = Number
-          return (0 <= x);
-        }
-      }
-    },
-    data: [{
-      fn: 'x^2'
-    }]
-  })
+
 
    /**
    *  - `shapeType = circle`
@@ -445,13 +412,13 @@ $('#examples').load('partials/examples.html', function () {
           initial: [-10, 10]
         }
       },
-      conj: {[
+      conj: [{
         radio: 4,
         baseDom: 'R',
         baseCod: 'R', 
         cod: 'R',
         dom: 'R'
-      ]}, 
+      }], 
       data: [ {
         id:0,
         fn: 'x * x * x',
