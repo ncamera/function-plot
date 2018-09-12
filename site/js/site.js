@@ -24,7 +24,7 @@ $(document).on('markupLoaded', function () {
    */
   instance = functionPlot({
     target: '#shape-rect-function',
-    axis: false,
+    grid: true,
     xAxis: {
       label: 'x - axis',
       scale: 'linear',
@@ -378,6 +378,7 @@ $('#examples').load('partials/examples.html', function () {
 
   // Clear Figure
   $('#grid-btn').click(function() {
+    instance.toggleGrid();
   })
   
   // Clear Figure
