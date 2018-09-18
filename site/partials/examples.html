@@ -1,4 +1,4 @@
-<div class="row"><div class="container"><button id="zoom-in" style="margin-right: 8px" class="primary">ZOOM IN!</button><button id="zoom-out" style="margin-right: 8px" class="primary">ZOOM OUT!</button><button id="update-figure" style="margin-right: 8px" class="primary">UPDATE FIGURE!</button><button id="update-function" style="margin-right: 8px" class="primary">UPDATE FUNCTION!</button></div></div><div class="example"><div class="container"><div class="row"><div class="col-md-6"><div class="comment"><h3>Shape Type</h3>
+<div class="row"><div class="container"><button id="zoom-in" style="margin-right: 8px" class="btn btn-default">Zoom In</button><button id="zoom-out" style="margin-right: 8px" class="btn btn-default">Zoom Out</button><button id="update-figure" style="margin-right: 8px" class="btn btn-primary">Update Figure</button><button id="update-function" style="margin-right: 8px" class="btn btn-primary">Update Function</button><button id="clear-figure" style="margin-right: 8px" class="btn btn-danger">Clear Figure</button><button id="grid-btn" style="margin-right: 8px" class="btn btn-info">Grid</button><button id="axis-btn" style="margin-right: 8px" class="btn btn-info">Axis</button><button id="tip-btn" style="margin-right: 8px" class="btn btn-info">Tip</button></div></div><div class="example"><div class="container"><div class="row"><div class="col-md-6"><div class="comment"><h3>Shape Type</h3>
 <p>The required parameters are:</p><ul>
 <li><code>graphType: &#39;shape&#39;</code></li>
 <li><code>shapeType: &#39;rect&#39;</code> (string) possible values: rect | circle | text |</li>
@@ -17,6 +17,8 @@
 </ul>
 </div><div class="code"><pre><code class="javascript">instance = functionPlot({
   target: '#shape-rect-function',
+  axis: false,
+  grid: true,
   xAxis: {
     label: 'x - axis',
     scale: 'linear',
@@ -41,7 +43,7 @@
 })</code></pre></div></div><div class="col-md-6 center-block demos"><span id="shape-rect-function" class="graph"></span></div></div></div></div><div class="example"><div class="container"><div class="row"><div class="col-md-6"><div class="comment"><ul>
 <li><code>Function</code></li>
 </ul>
-</div><div class="code"><pre><code class="javascript">functionPlot({
+</div><div class="code"><pre><code class="javascript">instanceFunction = functionPlot({
   title: 'y = x * x',
   target: '#quadratic-with-options',
   width: 580,
@@ -53,6 +55,23 @@
   },
   yAxis: {
     label: 'y - axis'
+  },
+  conj: {
+    radio: 0.1,
+    baseDom: 'R',
+    baseCod: 'Z', 
+    cod: 'Func',
+    dom: 'Func',
+    sets: {
+      fcod: function (x) {
+        // scope.x = Number
+        return (0 <= x);
+      },
+      fdom: function (x) {
+        // scope.x = Number
+        return (0 <= x);
+      }
+    }
   },
   data: [{
     fn: 'x^2'
@@ -343,4 +362,125 @@ functionPlot({
       //return Math.sin(x)
     }
   }]
-})</code></pre></div></div><div class="col-md-6 center-block demos"><span id="built-in-eval-function" class="graph"></span><span id="implicit-complex" class="graph"></span></div></div></div></div>
+})</code></pre></div></div><div class="col-md-6 center-block demos"><span id="built-in-eval-function" class="graph"></span><span id="implicit-complex" class="graph"></span></div></div></div></div><div class="example"><div class="container"><div class="row"><div class="col-md-6"><div class="comment"></div><div class="code"><pre><code class="javascript">})
+
+$('#wzrd').load('partials/wzrd.html')
+
+$('#examples').load('partials/examples.html', function () {
+  $(document).trigger('markupLoaded')
+  $('pre code').each(function (i, block) {
+    hljs.highlightBlock(block)
+  })
+
+  $('#p-slider').on('change', function () {
+    var value = +this.value;
+    $('#p-slider-value').html(value)
+  })
+
+  // Zoom
+  $('#zoom-in').click(function() {
+    instance.zoomIn();
+  });
+  $('#zoom-out').click(function() {
+    instance.zoomOut();
+  });
+
+  // Update Figure Graph
+  $('#update-figure').click(function() {
+    console.log('Instance', instance);
+    instance = functionPlot({
+      target: '#shape-rect-function',
+      xAxis: {
+        label: 'x - axis',
+        scale: 'linear',
+        domain: {
+          initial: [-10, 10],
+          type: 'discrete'
+        }
+      },
+      data: [{
+        shape: {
+          r : 2.0,
+          x : -2.0,
+          y : 0,
+          fill :"#2980b9",
+          stroke: "#ecf0f1",
+          rotation : 0.0
+        },
+        graphType: 'shape',
+        shapeType: 'circle'
+      }]
+    })
+  })
+
+  // Update Function Graph
+  $('#update-function').click(function() {
+    instanceFunction = functionPlot({
+      target: '#quadratic-with-options',
+      xAxis: {
+        label: 'x - axis',
+        scale: 'linear',
+        domain: {
+          initial: [-10, 10]
+        }
+      },
+      conj: [{
+        radio: 4,
+        baseDom: 'R',
+        baseCod: 'R', 
+        cod: 'R',
+        dom: 'R'
+      }], 
+      data: [ {
+        id:0,
+        fn: 'x * x * x',
+        graphType: 'interval'
+        //nSamples: 1000
+      }]
+    })
+  })
+
+  // Clear Figure
+  $('#clear-figure').click(function() {
+    instance.removeAllGraphs();
+  })
+
+  // Toggle Grid
+  $('#grid-btn').click(function() {
+    instance.toggleGrid();
+  })
+  
+  // Toggle Axis
+  $('#axis-btn').click(function() {
+    instance.toggleAxis();
+  })
+  
+  // Toggle Tip
+  $('#tip-btn').click(function() {
+    instanceFunction.toggleTip();
+  })
+})
+
+
+//$('#brcdn').load('partials/brcdn-module.html .panel.panel-primary', function () {
+//  clipboard()
+//})
+//
+//function clipboard() {
+//  ZeroClipboard.config( { swfPath: "//cdnjs.cloudflare.com/ajax/libs/zeroclipboard/2.2.0/ZeroClipboard.swf" } )
+//  var elements = [].slice.call(document.querySelectorAll('[data-clipboard-text]'))
+//  var client = new ZeroClipboard(elements)
+//  client.on('ready', function (event) {
+//    elements.forEach(function (el) {
+//      el.addEventListener('click', function (e) {
+//        e.preventDefault()
+//      }, false)
+//    })
+//    client.on('aftercopy', function (e) {
+//      e.target.setAttribute('class', 'btn btn-sm btn-success')
+//      setTimeout(function () {
+//        e.target.setAttribute('class', 'btn btn-sm btn-primary')
+//      }, 200)
+//    })
+//  })
+//}</code></pre></div></div><div class="col-md-6 center-block demos"><span id="shape-rect-function" class="graph"></span><span id="quadratic-with-options" class="graph"></span></div></div></div></div>
