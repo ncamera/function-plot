@@ -121,6 +121,7 @@ $(document).on('markupLoaded', function () {
    */
   functionPlot({
     target: '#shape-polyline-function',
+    grid: true,
     xAxis: {
       label: 'x - axis',
       scale: 'linear',
@@ -136,8 +137,7 @@ $(document).on('markupLoaded', function () {
         [2,6],
         [15,-10]
       ],
-      color :"orange",
-      rotation : -90,
+      stroke :"blue",
       fnType: 'points',
       polylineType : "line",
       graphType: 'polyline',
@@ -148,12 +148,12 @@ $(document).on('markupLoaded', function () {
         [-4,2],
         [-6,6]
       ],
-      color :"green",
+      stroke: '#ddd',
       rotation : 0,
       boundingBox: true,
       fnType: 'points',
       polylineType : "polygon",
-      graphType: 'polyline',
+      graphType: 'polyline'
     }]
   })
 
@@ -189,8 +189,6 @@ $(document).on('markupLoaded', function () {
       yAxis: {
         domain: [-4, 4] 
       },
-    
-
     },
     conj:[
       {
