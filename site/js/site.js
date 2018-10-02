@@ -319,16 +319,13 @@ $(document).on('markupLoaded', function () {
     },
     conj: [{
       radio: 2,
-      baseDom: 'Z',
-      baseCod: 'Z', 
-      cod: 'Func',
+      baseDom: 'N',
+      baseCod: 'R', 
+      cod: 'R',
       dom: 'Numer',
       sets: {
         fdom:['Lun','Mart','Mier','Juev','Vier','Saba','Dom','Lunes'],
-        fcod: function (x) {
-          // scope.x = Number
-          return (0 <= x);
-        }
+        fcod:'R'
       }
     }],
     data: [{
@@ -336,8 +333,8 @@ $(document).on('markupLoaded', function () {
       id: 0,
       fn: function (scope) {
         var x = scope.x
-        if (x == 2){ return 1}
-        else if(x == 1) { return 3}
+        if (x == 0){ return 1/3}
+        else if(x == 1) { return 1/4}else return 2
         
         //return Math.sin(x)
       }
